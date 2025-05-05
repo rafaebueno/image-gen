@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Buscar Template no Supabase
   description: Busca o primeiro template ativo na tabela 'templates' e retorna o campo 'json'.
-  version: '1.0.0'
+  version: 1.0.0
 servers:
   - url: https://bbypogwrzjvdlcttiiqb.supabase.co
 paths:
@@ -16,6 +16,7 @@ paths:
           required: true
           schema:
             type: string
+            enum: ["eq.true", "eq.false"]  # Restringe os valores válidos
             example: eq.true
         - name: select
           in: query
@@ -30,7 +31,7 @@ paths:
             type: string
             example: 1
       responses:
-        '200':
+        "200":
           description: Retorna o JSON do primeiro template ativo
           content:
             application/json:
