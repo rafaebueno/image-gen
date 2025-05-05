@@ -1,0 +1,51 @@
+openapi: 3.0.1
+info:
+  title: Buscar Template no Supabase
+  description: Busca o primeiro template ativo e retorna o JSON de estilo visual.
+  version: '1.0'
+servers:
+  - url: https://bbypogwrzjvdlcttiiqb.supabase.co
+paths:
+  /rest/v1/templates:
+    get:
+      summary: Busca o primeiro template ativo
+      operationId: buscarTemplate
+      parameters:
+        - in: query
+          name: ativo
+          required: true
+          schema:
+            type: string
+            example: eq.true
+        - in: query
+          name: select
+          required: true
+          schema:
+            type: string
+            example: json
+        - in: query
+          name: limit
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: JSON com dados do template
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    json:
+                      type: object
+      security:
+        - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
