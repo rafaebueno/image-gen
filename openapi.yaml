@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Buscar Template no Supabase
-  description: Busca o primeiro template ativo na tabela 'templates' e retorna o campo 'json'.
+  description: Busca o primeiro template ativo e retorna o campo 'json'
   version: '1.0.0'
 servers:
   - url: https://bbypogwrzjvdlcttiiqb.supabase.co
@@ -31,7 +31,7 @@ paths:
             example: 1
       responses:
         '200':
-          description: Retorna o campo 'json' do template ativo
+          description: Retorna o JSON do primeiro template ativo
           content:
             application/json:
               schema:
@@ -41,12 +41,11 @@ paths:
                   properties:
                     json:
                       type: object
-      security:
-        - api_key: []
+      x-openai-isConsequential: false
+      x-openai-headers:
+        apikey: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieXBvZ3dyemp2ZGxjdHRpaXFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0Njc2NzQsImV4cCI6MjA2MjA0MzY3NH0.SCaI-jMvBaWUj4T7PKATEisuVXhUxBK9oYLxVrS8ufE
+        Authorization: >-
+          Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieXBvZ3dyemp2ZGxjdHRpaXFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0Njc2NzQsImV4cCI6MjA2MjA0MzY3NH0.SCaI-jMvBaWUj4T7PKATEisuVXhUxBK9oYLxVrS8ufE
 components:
-  securitySchemes:
-    api_key:
-      type: apiKey
-      in: header
-      name: apikey
   schemas: {}
